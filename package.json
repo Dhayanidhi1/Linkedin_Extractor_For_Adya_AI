@@ -1,0 +1,8 @@
+{
+  "name": "linkedin-tracker",
+  "version": "1.0.0",
+  "description": "LinkedIn Post Monitoring & Analytics",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'"
+  }
+}

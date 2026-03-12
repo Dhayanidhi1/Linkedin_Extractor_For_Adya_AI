@@ -5,6 +5,13 @@ __pycache__/
 .env.example
 .git/
 requirements.txt
-README.md
 *.log
 .gitignore
+*.db
+*.json
+*.csv
+debug_*.html
+DOM_*.json
+linkedin_state.json
+wrappers.txt
+scraper_*.log
