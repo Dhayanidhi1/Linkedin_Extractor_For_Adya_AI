@@ -1,0 +1,10 @@
+__pycache__/
+*.py
+*.pyc
+.env
+.env.example
+.git/
+requirements.txt
+README.md
+*.log
+.gitignore

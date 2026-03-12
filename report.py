@@ -424,7 +424,7 @@ HTML_TEMPLATE = """
         </div>
         <a href="../index.html" class="btn-info">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            Vortex Info
+            LinkedIn Info
         </a>
     </div>
 </div>
@@ -610,7 +610,7 @@ HTML_TEMPLATE = """
     <div class="pagination" id="pagination"></div>
 
     <div class="footer-cta">
-        <h3>Vortex Tracker Information</h3>
+        <h3>LinkedIn Tracker Information</h3>
         <p>Curious about how this project works or want to know more about the developer?</p>
         <a href="../landing_page.html" class="btn-info" style="padding: 12px 28px; font-size: 1rem; border-radius: 12px;">
             View Project Details & Developer Info
