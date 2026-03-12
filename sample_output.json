@@ -1,0 +1,31 @@
+[
+    {
+        "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:1234567890/",
+        "author_name": "Jane Doe",
+        "author_profile_url": "https://www.linkedin.com/in/janedoe",
+        "post_text": "Had a great time discussing the future of AI with Shayak Mazumder at the data summit today! Adya AI is doing some fascinating work in the enterprise space.",
+        "date_posted": "1w",
+        "likes": 142,
+        "comments": 24,
+        "reposts": 12,
+        "matched_keywords": [
+            "Shayak Mazumder",
+            "Adya AI"
+        ],
+        "post_type": "original"
+    },
+    {
+        "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:0987654321/",
+        "author_name": "John Smith",
+        "author_profile_url": "https://www.linkedin.com/in/johnsmith",
+        "post_text": "Excited to see the launch of the new product from Adya AI! Truly game changing.",
+        "date_posted": "2d",
+        "likes": 56,
+        "comments": 3,
+        "reposts": 1,
+        "matched_keywords": [
+            "Adya AI"
+        ],
+        "post_type": "repost"
+    }
+]

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Tracker | Advanced LinkedIn Post Monitoring</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030712;
+            --surface: rgba(17, 24, 39, 0.7);
+            --surface-elevated: rgba(31, 41, 55, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.3);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            box-shadow: 0 0 30px var(--accent-glow);
+            position: relative;
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            border-radius: 28px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(10px);
+        }
+
+        .logo-icon {
+            font-size: 40px;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+
+        /* About Section */
+        .section-card {
+            width: 100%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 32px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+            padding: 32px;
+            width: 100%;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            background: var(--surface-elevated);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .avatar-icon {
+            font-size: 32px;
+            color: var(--text-secondary);
+        }
+
+        .profile-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .profile-title {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-linkedin {
+            background: rgba(10, 102, 194, 0.1);
+            color: #0a66c2;
+            border: 1px solid rgba(10, 102, 194, 0.2);
+        }
+
+        .btn-linkedin:hover {
+            background: #0a66c2;
+            color: white;
+        }
+
+        .btn-github {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid var(--border);
+        }
+
+        .btn-github:hover {
+            background: white;
+            color: black;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            width: 100%;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Built With Section */
+        .built-with-container {
+            margin-top: 40px;
+        }
+
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .pill {
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .pill:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Decorative Elements */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 40px 0;
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="4" y2="12"></line>
+                <line x1="20" y1="12" x2="22" y2="12"></line>
+            </svg>
+        </div>
+
+        <h1 class="hero-title">Linkedin Tracker</h1>
+        <p class="hero-subtitle">Advanced LinkedIn Post Monitoring & Analytics</p>
+
+        <!-- Navigation -->
+        <div style="position: absolute; top: 40px; right: 40px;">
+            <a href="output/linkedin_report.html" class="btn btn-github" style="padding: 10px 20px; font-size: 0.9rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                Back to Dashboard
+            </a>
+        </div>
+
+        <!-- About -->
+        <div class="section-card">
+            <h2 class="section-title">About This Project</h2>
+            <p class="section-content">
+                Linkedin Tracker is a powerful LinkedIn post monitoring tool that helps you track mentions,
+                analyze engagement, and discover valuable insights from LinkedIn content.
+                Built with modern web technologies and real-time scraping capabilities.
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Profile -->
+        <div class="profile-section">
+            <div class="avatar">
+                <svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <h3 class="profile-name">Dhayanidhi R</h3>
+            <p class="profile-title">Full Stack Developer</p>
+            <div class="profile-links">
+                <a href="https://www.linkedin.com/in/dhayanidhi-r-4200b5286/" target="_blank" class="btn btn-linkedin">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                    LinkedIn Profile
+                </a>
+                <a href="https://github.com/Dhayanidhi1" target="_blank" class="btn btn-github">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub Profile
+                </a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Features -->
+        <h2 class="section-title" style="margin-bottom: 40px;">Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-header">🚀 Real-time Scraping</div>
+                <div class="feature-desc">Live post extraction with instant dashboard updates and session persistence.
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-header">📊 Advanced Analytics</div>
+                <div class="feature-desc">Comprehensive charts and engagement metrics for deep performance tracking.
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-header">🔍 Smart Filtering</div>
+                <div class="feature-desc">Filter by keywords, authors, dates, and post types.</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-header">⚡ Lightning Fast</div>
+                <div class="feature-desc">Optimized performance with background processing.</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Built With -->
+        <div class="built-with-container">
+            <h2 class="section-title">Built With</h2>
+            <div class="pill-grid">
+                <div class="pill">Next.js</div>
+                <div class="pill">React</div>
+                <div class="pill">TypeScript</div>
+                <div class="pill">Tailwind CSS</div>
+                <div class="pill">Python</div>
+                <div class="pill">Playwright</div>
+                <div class="pill">SQLite</div>
+                <div class="pill">Node.js</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

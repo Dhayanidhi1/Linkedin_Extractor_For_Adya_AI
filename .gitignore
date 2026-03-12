@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Output
+output/*.json
+output/*.csv
+output/*.log
+output/*.db
+output/DOM_summary.json
+output/debug_search.html
+output/wrappers.txt
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.bak
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
