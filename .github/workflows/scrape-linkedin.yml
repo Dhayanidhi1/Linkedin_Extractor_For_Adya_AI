@@ -2,8 +2,8 @@ name: Scrape LinkedIn Data
 
 on:
   schedule:
-    # Runs every hour at minute 0
-    - cron: '0 * * * *'
+    # Runs every 5 minutes (minimum allowed by GitHub)
+    - cron: '*/5 * * * *'
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 jobs:
